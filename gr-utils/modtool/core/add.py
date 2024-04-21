@@ -196,8 +196,8 @@ class ModToolAdd(ModTool):
             return
         try:
             append_re_line_sequence(self._file['cmlib'],
-                                    fr'list\(APPEND test_{modname_}_sources.*\n',
-                                    f'qa_{blockname_}.cc')
+                                    fr'list\(APPEND test_{modname_}_sources(?:\s*[^)]*)?',
+                                    f' qa_{blockname_}.cc')
             self.scm.mark_files_updated((self._file['cmlib'],))
         except IOError:
             logger.warning("Can't add C++ QA files.")

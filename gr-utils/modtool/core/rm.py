@@ -158,7 +158,8 @@ class ModToolRemove(ModTool):
             elif path == os.path.join(self.info['pydir'], 'bindings', 'docstrings'):
                 blockname_pattern = f"^{self.info['blockname']}_pydoc_template.h$"
             elif path == 'lib':
-                blockname_pattern = f"^{self.info['blockname']}_impl(\\.h|\\.cc)$"
+                blockname_pattern = f"^{self.info['blockname']}_impl(.h|.cc)$"
+                blockname_pattern += f"|^qa_{self.info['blockname']}(.h|.cc)$"
             elif path == self.info['includedir']:
                 blockname_pattern = f"^{self.info['blockname']}.h$"
             elif path == 'grc':
